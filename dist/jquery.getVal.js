@@ -1,4 +1,4 @@
-/*! jquery.getVal - v0.1.0 - 2013-04-04
+/*! jquery.getVal - v0.1.1 - 2013-04-04
 * https://github.com/davetayls/jquery.getVal
 * Copyright (c) 2013 davetayls; Licensed MIT */
 (function($){
@@ -6,13 +6,19 @@
 
   $.getVal = {
     defaults: {
-      radioType: 'group', // or 'val'
+      radioType: 'group', // 'checked' or 'val'
       checkedType: 'val' // or 'checked'
     },
     handlers: {
       radio: function($el, settings){
         if (settings.radioType === 'val'){
           return $el.val();
+        } else if (settings.radioType === 'checked'){
+          if ($el[0].checked){
+            return $el.val();
+          } else {
+            return;
+          }
         } else {
           var $checked = $('[name="'+ $el[0].name +'"]:checked');
           if ($checked.length){

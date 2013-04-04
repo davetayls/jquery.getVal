@@ -26,11 +26,17 @@ jQuery(function($) {
     $('[name="radio"]').getVal(); //=> 'yes'
     $('[name="radio"]').getVal({ radioType: 'val' }); //=> 'no'
     $('[name="radio"]:checked').getVal({ radioType: 'val' }); //=> 'yes'
+    $('[name="radio"]:checked').getVal({ radioType: 'checked' }); //=> 'yes'
+    $('[name="radio"]:not(:checked)').getVal({ radioType: 'checked' }); //=> undefined
 });
 </script>
 ```
 
 ## Release History
+
+### 0.1.1
+ - added `checked` radio type which returns the value if current
+   element is checked otherwise undefined
 
 ### 0.1.0
  - initial release

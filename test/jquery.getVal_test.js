@@ -30,17 +30,36 @@
   test('text input', function() {
     equal(this.$elems.find('[type="text"]').getVal(), 'text');
   });
-  test('checkbox input', function() {
+
+  // Checkboxes
+  test('checkbox val', function() {
     equal(this.$elems.find('[type="checkbox"]').getVal(), 'yes');
   });
-  test('checkbox input get checked', function() {
+  test('checkbox checked', function() {
     equal(this.$elems.find('[type="checkbox"]').getVal({
       checkedType: 'checked'
     }), true);
   });
-  test('radio inputs', function() {
+
+
+  // Radio
+  test('radio group', function() {
     equal(this.$elems.find('[type="radio"]').getVal(), 'yes');
   });
+  test('radio checked', function() {
+    equal(this.$elems.find('[type="radio"]:checked').getVal({
+      radioType: 'checked'
+    }), 'yes');
+    equal(typeof this.$elems.find('[type="radio"]:not(:checked)').getVal({
+      radioType: 'checked'
+    }), 'undefined');
+  });
+  test('radio val', function() {
+    equal(this.$elems.find('[type="radio"]').getVal(), 'yes');
+  });
+
+
+  // Select
   test('select', function() {
     equal(this.$elems.find('select').getVal(), 'yes');
   });
